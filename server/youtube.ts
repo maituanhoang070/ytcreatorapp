@@ -16,9 +16,10 @@ const getYouTubeConfig = () => {
 export function generateYouTubeAuthUrl(): string {
   const { clientId } = getYouTubeConfig();
   
-  // Hard-code the redirect URI to match exactly what's configured in Google Console
-  // This should be exactly what's in your Google API Console Authorized redirect URIs
-  const redirectUri = "https://33dbbe8e-f5ff-4107-8fd4-89f138c9799b-00-z0m4lqpvjz8i.riker.replit.dev/youtube-callback";
+  // Get the redirect URI from environment or use a default
+  // For Render.com, this should be updated in the environment variables
+  const hostname = process.env.RENDER_EXTERNAL_HOSTNAME || process.env.HOST || "33dbbe8e-f5ff-4107-8fd4-89f138c9799b-00-z0m4lqpvjz8i.riker.replit.dev";
+  const redirectUri = `https://${hostname}/youtube-callback`;
   
   const scopes = [
     "https://www.googleapis.com/auth/youtube",
@@ -48,8 +49,10 @@ export async function getYouTubeTokenFromCode(code: string): Promise<{
 }> {
   const { clientId, clientSecret } = getYouTubeConfig();
   
-  // Hard-code the redirect URI to match exactly what's configured in Google Console
-  const redirectUri = "https://33dbbe8e-f5ff-4107-8fd4-89f138c9799b-00-z0m4lqpvjz8i.riker.replit.dev/youtube-callback";
+  // Get the redirect URI from environment or use a default
+  // For Render.com, this should be updated in the environment variables
+  const hostname = process.env.RENDER_EXTERNAL_HOSTNAME || process.env.HOST || "33dbbe8e-f5ff-4107-8fd4-89f138c9799b-00-z0m4lqpvjz8i.riker.replit.dev";
+  const redirectUri = `https://${hostname}/youtube-callback`;
   
   console.log(`Using token exchange redirect URI: ${redirectUri}`);
   

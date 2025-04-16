@@ -34,6 +34,7 @@ export function generateYouTubeAuthUrl(): string {
   authUrl.searchParams.append("response_type", "code");
   authUrl.searchParams.append("access_type", "offline");
   authUrl.searchParams.append("prompt", "consent");
+  authUrl.searchParams.append("flowName", "GeneralOAuthFlow");
   
   console.log(`Using redirect URI: ${redirectUri}`);
   

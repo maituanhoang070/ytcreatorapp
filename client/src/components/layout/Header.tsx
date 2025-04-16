@@ -12,14 +12,14 @@ export default function Header() {
   // In a real app, this would come from an auth context
   const isAuthenticated = true;
   
-  const { data: youtubeAuthUrl } = useQuery({
+  const { data: youtubeAuthData } = useQuery<{ authUrl: string }>({
     queryKey: ["/api/youtube/auth-url"],
     enabled: isAuthenticated,
   });
 
   const handleYouTubeConnect = () => {
-    if (youtubeAuthUrl?.authUrl) {
-      window.open(youtubeAuthUrl.authUrl, "_blank", "width=600,height=700");
+    if (youtubeAuthData && youtubeAuthData.authUrl) {
+      window.open(youtubeAuthData.authUrl, "_blank", "width=600,height=700");
     } else {
       toast({
         title: "Không thể kết nối YouTube",

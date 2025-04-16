@@ -16,17 +16,17 @@ export default function Footer() {
           </div>
           
           <div className="flex space-x-4">
-            <Link href="/privacy">
-              <a className="text-ytgray-300 hover:text-white text-sm">Chính sách bảo mật</a>
+            <Link href="/privacy" className="text-ytgray-300 hover:text-white text-sm">
+              Chính sách bảo mật
             </Link>
-            <Link href="/terms">
-              <a className="text-ytgray-300 hover:text-white text-sm">Điều khoản dịch vụ</a>
+            <Link href="/terms" className="text-ytgray-300 hover:text-white text-sm">
+              Điều khoản dịch vụ
             </Link>
-            <Link href="/help">
-              <a className="text-ytgray-300 hover:text-white text-sm">Trợ giúp</a>
+            <Link href="/help" className="text-ytgray-300 hover:text-white text-sm">
+              Trợ giúp
             </Link>
-            <Link href="/contact">
-              <a className="text-ytgray-300 hover:text-white text-sm">Liên hệ</a>
+            <Link href="/contact" className="text-ytgray-300 hover:text-white text-sm">
+              Liên hệ
             </Link>
           </div>
         </div>

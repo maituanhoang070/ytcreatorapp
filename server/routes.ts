@@ -76,7 +76,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
       return res.redirect("/?youtube_connected=true");
     } catch (error) {
       console.error("Error in YouTube auth callback redirect:", error);
-      return res.redirect(`/?error=${encodeURIComponent(error.message)}`);
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      return res.redirect(`/?error=${encodeURIComponent(errorMessage)}`);
     }
   });
   
@@ -165,7 +166,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
       
       // Find the selected topic
-      const selectedTopic = selectedTrend.topics.find((t: any) => t.id === topicId || t.title === topicId);
+      // Make sure topics is an array before using find
+      const topics = Array.isArray(selectedTrend.topics) ? selectedTrend.topics : [];
+      const selectedTopic = topics.find((t: any) => t.id === topicId || t.title === topicId);
       if (!selectedTopic) {
         return res.status(404).json({ message: "Selected topic not found" });
       }

@@ -16,11 +16,9 @@ const getYouTubeConfig = () => {
 export function generateYouTubeAuthUrl(): string {
   const { clientId } = getYouTubeConfig();
   
-  // Use REPLIT_DOMAINS environment variable to get the dynamic domain
-  const domains = process.env.REPLIT_DOMAINS?.split(",") || [];
-  const callbackDomain = domains.length > 0 ? domains[0] : "ytcreator-app.repl.co";
-  
-  const redirectUri = `https://${callbackDomain}/youtube-callback`;
+  // Hard-code the redirect URI to match exactly what's configured in Google Console
+  // This should be exactly what's in your Google API Console Authorized redirect URIs
+  const redirectUri = "https://33dbbe8e-f5ff-4107-8fd4-89f138c9799b-00-z0m4lqpvjz8i.riker.replit.dev/youtube-callback";
   
   const scopes = [
     "https://www.googleapis.com/auth/youtube",
@@ -36,6 +34,8 @@ export function generateYouTubeAuthUrl(): string {
   authUrl.searchParams.append("access_type", "offline");
   authUrl.searchParams.append("prompt", "consent");
   
+  console.log(`Using redirect URI: ${redirectUri}`);
+  
   return authUrl.toString();
 }
 
@@ -48,11 +48,10 @@ export async function getYouTubeTokenFromCode(code: string): Promise<{
 }> {
   const { clientId, clientSecret } = getYouTubeConfig();
   
-  // Use REPLIT_DOMAINS environment variable to get the dynamic domain
-  const domains = process.env.REPLIT_DOMAINS?.split(",") || [];
-  const callbackDomain = domains.length > 0 ? domains[0] : "ytcreator-app.repl.co";
+  // Hard-code the redirect URI to match exactly what's configured in Google Console
+  const redirectUri = "https://33dbbe8e-f5ff-4107-8fd4-89f138c9799b-00-z0m4lqpvjz8i.riker.replit.dev/youtube-callback";
   
-  const redirectUri = `https://${callbackDomain}/youtube-callback`;
+  console.log(`Using token exchange redirect URI: ${redirectUri}`);
   
   try {
     // Exchange code for tokens

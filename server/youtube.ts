@@ -1,7 +1,5 @@
 import { z } from "zod";
 
-const REDIRECT_URI = "https://ytcreator-app.repl.co/youtube-callback";
-
 // Configure YouTube OAuth credentials
 const getYouTubeConfig = () => {
   const clientId = process.env.YOUTUBE_CLIENT_ID || "";

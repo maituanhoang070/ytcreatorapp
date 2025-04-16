@@ -33,40 +33,28 @@ export default function Header() {
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
       <div className="container mx-auto px-4 py-2 flex items-center justify-between">
         <div className="flex items-center space-x-6">
-          <Link href="/">
-            <a className="flex items-center">
-              <svg className="w-6 h-6 text-ytred" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
-              </svg>
-              <span className="font-medium text-lg text-ytdark ml-1">YTCreator</span>
-            </a>
+          <Link href="/" className="flex items-center">
+            <svg className="w-6 h-6 text-ytred" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"></path>
+            </svg>
+            <span className="font-medium text-lg text-ytdark ml-1">YTCreator</span>
           </Link>
           
           <nav className="hidden md:flex items-center space-x-4">
-            <Link href="/">
-              <a className={`text-sm py-2 border-b-2 ${location === "/" ? "border-ytred text-ytdark font-medium" : "border-transparent text-ytgray-400 hover:text-ytdark"}`}>
-                Trang chủ
-              </a>
+            <Link href="/" className={`text-sm py-2 border-b-2 ${location === "/" ? "border-ytred text-ytdark font-medium" : "border-transparent text-ytgray-400 hover:text-ytdark"}`}>
+              Trang chủ
             </Link>
-            <Link href="/dashboard">
-              <a className={`text-sm py-2 border-b-2 ${location === "/dashboard" ? "border-ytred text-ytdark font-medium" : "border-transparent text-ytgray-400 hover:text-ytdark"}`}>
-                Bảng điều khiển
-              </a>
+            <Link href="/dashboard" className={`text-sm py-2 border-b-2 ${location === "/dashboard" ? "border-ytred text-ytdark font-medium" : "border-transparent text-ytgray-400 hover:text-ytdark"}`}>
+              Bảng điều khiển
             </Link>
-            <Link href="/videos">
-              <a className={`text-sm py-2 border-b-2 ${location === "/videos" ? "border-ytred text-ytdark font-medium" : "border-transparent text-ytgray-400 hover:text-ytdark"}`}>
-                Video của tôi
-              </a>
+            <Link href="/videos" className={`text-sm py-2 border-b-2 ${location === "/videos" ? "border-ytred text-ytdark font-medium" : "border-transparent text-ytgray-400 hover:text-ytdark"}`}>
+              Video của tôi
             </Link>
-            <Link href="/analytics">
-              <a className={`text-sm py-2 border-b-2 ${location === "/analytics" ? "border-ytred text-ytdark font-medium" : "border-transparent text-ytgray-400 hover:text-ytdark"}`}>
-                Phân tích
-              </a>
+            <Link href="/analytics" className={`text-sm py-2 border-b-2 ${location === "/analytics" ? "border-ytred text-ytdark font-medium" : "border-transparent text-ytgray-400 hover:text-ytdark"}`}>
+              Phân tích
             </Link>
-            <Link href="/help">
-              <a className={`text-sm py-2 border-b-2 ${location === "/help" ? "border-ytred text-ytdark font-medium" : "border-transparent text-ytgray-400 hover:text-ytdark"}`}>
-                Trợ giúp
-              </a>
+            <Link href="/help" className={`text-sm py-2 border-b-2 ${location === "/help" ? "border-ytred text-ytdark font-medium" : "border-transparent text-ytgray-400 hover:text-ytdark"}`}>
+              Trợ giúp
             </Link>
           </nav>
         </div>
@@ -112,30 +100,20 @@ export default function Header() {
       {showMobileNav && (
         <div className="md:hidden border-t border-gray-200 bg-white">
           <nav className="flex flex-col px-4 py-2">
-            <Link href="/">
-              <a className={`py-2 ${location === "/" ? "text-ytdark font-medium" : "text-ytgray-400"}`}>
-                Trang chủ
-              </a>
+            <Link href="/" className={`py-2 ${location === "/" ? "text-ytdark font-medium" : "text-ytgray-400"}`}>
+              Trang chủ
             </Link>
-            <Link href="/dashboard">
-              <a className={`py-2 ${location === "/dashboard" ? "text-ytdark font-medium" : "text-ytgray-400"}`}>
-                Bảng điều khiển
-              </a>
+            <Link href="/dashboard" className={`py-2 ${location === "/dashboard" ? "text-ytdark font-medium" : "text-ytgray-400"}`}>
+              Bảng điều khiển
             </Link>
-            <Link href="/videos">
-              <a className={`py-2 ${location === "/videos" ? "text-ytdark font-medium" : "text-ytgray-400"}`}>
-                Video của tôi
-              </a>
+            <Link href="/videos" className={`py-2 ${location === "/videos" ? "text-ytdark font-medium" : "text-ytgray-400"}`}>
+              Video của tôi
             </Link>
-            <Link href="/analytics">
-              <a className={`py-2 ${location === "/analytics" ? "text-ytdark font-medium" : "text-ytgray-400"}`}>
-                Phân tích
-              </a>
+            <Link href="/analytics" className={`py-2 ${location === "/analytics" ? "text-ytdark font-medium" : "text-ytgray-400"}`}>
+              Phân tích
             </Link>
-            <Link href="/help">
-              <a className={`py-2 ${location === "/help" ? "text-ytdark font-medium" : "text-ytgray-400"}`}>
-                Trợ giúp
-              </a>
+            <Link href="/help" className={`py-2 ${location === "/help" ? "text-ytdark font-medium" : "text-ytgray-400"}`}>
+              Trợ giúp
             </Link>
           </nav>
         </div>

@@ -51,6 +51,35 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
   
+  // YouTube Auth callback for redirect (handles GET requests)
+  app.get("/youtube-callback", async (req: Request, res: Response) => {
+    try {
+      const code = req.query.code as string;
+      const userId = 1; // Default user ID for demo
+      
+      if (!code) {
+        return res.redirect("/?error=missing_code");
+      }
+      
+      const userData = await getYouTubeTokenFromCode(code);
+      const { accessToken, refreshToken, channelId, channelName } = userData;
+      
+      await storage.updateUserYoutubeCredentials(
+        userId,
+        accessToken,
+        refreshToken,
+        channelId,
+        channelName
+      );
+      
+      // Redirect back to the home page with success
+      return res.redirect("/?youtube_connected=true");
+    } catch (error) {
+      console.error("Error in YouTube auth callback redirect:", error);
+      return res.redirect(`/?error=${encodeURIComponent(error.message)}`);
+    }
+  });
+  
   // Channel settings endpoints
   app.post("/api/channel-settings", async (req: Request, res: Response) => {
     try {
